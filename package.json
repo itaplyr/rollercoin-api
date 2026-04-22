@@ -27,5 +27,8 @@
   "dependencies": {
     "pako": "^2.1.0",
     "ws": "^8.14.0"
+  },
+  "publishConfig": {
+    "@itaplyr:registry": "https://npm.pkg.github.com"
   }
 }
