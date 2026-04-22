@@ -61,9 +61,9 @@ describe('Marketplace', () => {
     expect(info.type).toBe('miner');
   });
 
-  it('should get item image for miners', () => {
-    const info = marketplace.getItemInfo('test-id', 'miner');
-    expect(info).resolves.toHaveProperty('image');
+  it('should get item image for miners', async () => {
+    const info = await marketplace.getItemInfo('test-id', 'miner');
+    expect(info).toHaveProperty('image');
   });
 });
 
