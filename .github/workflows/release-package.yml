@@ -6,6 +6,7 @@ on:
 
 jobs:
   build:
+    name: Build & Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -13,9 +14,11 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
+      - run: npm run build
       - run: npm test
 
   publish-gpr:
+    name: Publish to GitHub Packages
     needs: build
     runs-on: ubuntu-latest
     permissions:
@@ -28,6 +31,7 @@ jobs:
           node-version: 20
           registry-url: https://npm.pkg.github.com/
       - run: npm ci
+      - run: npm run build
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
